@@ -73,7 +73,7 @@ services:
 
 ### Nginx Proxy Manager
 
-- (official site)[https://nginxproxymanager.com/]
+- [official site](https://nginxproxymanager.com/)
 - create the required folders on your workspace:
   ```sh
   mkdir nginx_manager
