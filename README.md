@@ -9,7 +9,9 @@ Follow official guide (for example debian):
 ## Install Portainer CE:
 
 [Official Guide](https://docs.portainer.io/start/install-ce/server/docker/linux)
+
 N.B. Choose to route the 9000 port instead of 9443 if you don't need HTTPS.
+
 ```sh
 docker volume create portainer_data
 docker run -d -p 8000:8000 -p 9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.21.4
