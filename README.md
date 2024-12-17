@@ -133,7 +133,6 @@ mkdir music
 - modify the apps stack on portainer and add this:
 
 ```yaml
-services:
   navidrome:
     image: deluan/navidrome:latest
     user: 1000:1000 # should be owner of volumes
@@ -151,7 +150,6 @@ services:
       - "${home_path}/navidrome/music:/music:ro"
 ```
 
-- again create a new environment env variable **home_path**
 - visit http://localhost:4533 and setup an admin account
 
 
@@ -161,7 +159,44 @@ services:
 
 <img width="497" alt="image" src="https://github.com/user-attachments/assets/e9f5faca-e4b5-41c5-868e-66360d10eca2" />
 
+- [Optional] enable ssl certificate.
 
+## JellyFin
+
+### JellyFin setup
+
+- create 4 folder on your workspace:
+
+```sh
+mkdir jellyfin
+cd jellyfin
+mkdir data
+mkdir videos
+mkdir cache
+```
+
+- ... put some videos in your videos folder
+
+- modify the apps stack on portainer and add this:
+
+```yaml
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    user: uid:gid
+    ports:
+      - 8096:8096
+    volumes:
+      - ${home_path}/jellyfin/config:/config
+      - ${home_path}/jellyfin/cache:/cache
+      - type: bind
+        source: ${home_path}/jellyfin/videos
+        target: /media
+        read_only: true
+    restart: 'unless-stopped'
+```
+
+- connect to http://localhost:8096/ and configure login and media
 
 
 
